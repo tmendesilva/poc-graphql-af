@@ -1,0 +1,16 @@
+{
+  "name": "poc-graphql-af",
+  "private": true,
+  "version": "0.0.0",
+  "scripts": {
+    "migrate": "pnpm --filter salesman run migrate && pnpm --filter product run migrate && pnpm --filter order run migrate",
+    "seed": "pnpm --filter salesman run seed && pnpm --filter product run seed && pnpm --filter order run seed",
+    "dev": "concurrently -n salesman,product,order,gateway -c blue,green,yellow,magenta \"pnpm --filter salesman run dev\" \"pnpm --filter product run dev\" \"pnpm --filter order run dev\" \"pnpm --filter gateway run dev\"",
+    "kill": "kill-port 4000 4001 4002 4003"
+  },
+  "devDependencies": {
+    "concurrently": "^9.0.1",
+    "kill-port": "^2.0.1",
+    "typescript": "^5.6.3"
+  }
+}
